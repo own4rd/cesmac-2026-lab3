@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog IA — Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Blog IA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Alternar menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/posts">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Cadastrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/profile">Perfil</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        <h1 class="h3 mb-3">Posts</h1>
+        <p class="text-muted">Lista de artigos sobre IA (dados mockados no servidor).</p>
+        <div class="list-group">
+            <% for (const [pid, p] of Object.entries(posts)) { %>
+            <a class="list-group-item list-group-item-action" href="/post/<%= pid %>">
+                <div class="d-flex w-100 justify-content-between">
+                    <h2 class="h6 mb-1"><%= p.title %></h2>
+                    <small class="text-muted"><%= p.date %></small>
+                </div>
+                <p class="mb-0 small text-secondary"><%= p.excerpt %></p>
+            </a>
+            <% } %>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1 small">&copy; 2026 Blog IA — projeto de aula</p>
+            <p class="mb-0 text-secondary small">Navbar e footer repetidos em cada página (exercício: extrair parciais)</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
