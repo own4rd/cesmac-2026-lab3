@@ -11,7 +11,6 @@ Material de apoio para **alunos do 3º período** do curso de **Sistemas de Info
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) instalado (versão LTS recomendada)
-- Editor de código e terminal à vontade
 
 ## Como rodar o projeto
 
