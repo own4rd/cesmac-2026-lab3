@@ -66,7 +66,5 @@ Este repositório ajuda a relacionar teoria e prática em:
 - **Templates** (EJS): inclusão de dados do servidor nas páginas HTML
 - **Separação** entre lógica no servidor, marcação nas views e estilo no `public/`
 
-Os textos dos posts são **fictícios** e servem só para preencher o layout; o foco é o código e os conceitos de desenvolvimento web.
-
 
 *Projeto educacional — CESMAC · Curso de Sistemas de Informação.*
