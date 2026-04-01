@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog IA — <%= post.title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%= post.title %></li>
+            </ol>
+        </nav>
+
+        <article>
+            <p class="text-muted small mb-2"><%= post.date %></p>
+            <h1 class="h3 mb-4"><%= post.title %></h1>
+            <% post.paragraphs.forEach(function(paragraph) { %>
+            <p><%= paragraph %></p>
+            <% }); %>
+            <p class="small text-muted mt-4 mb-0">ID do post (rota): <%= id %></p>
+            <a class="btn btn-outline-dark mt-3" href="/posts">Voltar aos posts</a>
+        </article>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
