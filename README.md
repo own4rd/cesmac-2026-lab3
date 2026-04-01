@@ -70,10 +70,5 @@ Este repositório ajuda a relacionar teoria e prática em:
 
 Os textos dos posts são **fictícios** e servem só para preencher o layout; o foco é o código e os conceitos de desenvolvimento web.
 
-## Dúvidas na disciplina
-
-Tire dúvidas com o professor da disciplina e use este projeto como base para experimentar: alterar rotas, criar novas páginas EJS ou estilizar em `public/css/`.
-
----
 
 *Projeto educacional — CESMAC · Curso de Sistemas de Informação.*
