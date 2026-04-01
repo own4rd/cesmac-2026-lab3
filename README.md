@@ -7,7 +7,6 @@ Material de apoio para **alunos do 3º período** do curso de **Sistemas de Info
 - Servidor HTTP com **Express** (`index.js`)
 - Views em **EJS** (`views/`) — home, posts, detalhe do post, sobre, contato, login, cadastro e perfil
 - Arquivos estáticos em `public/` (por exemplo, CSS)
-- Dados de posts **em memória** (objeto JavaScript), apenas para exercício — não é banco de dados real
 
 ## Pré-requisitos
 
