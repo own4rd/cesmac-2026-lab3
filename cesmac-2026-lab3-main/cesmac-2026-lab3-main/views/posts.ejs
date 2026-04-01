@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog IA — Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="container py-4">
+        <h1 class="h3 mb-3">Posts</h1>
+        <p class="text-muted">Lista de artigos sobre IA (dados mockados no servidor).</p>
+        <div class="list-group">
+            <% for (const [pid, p] of Object.entries(posts)) { %>
+            <a class="list-group-item list-group-item-action" href="/post/<%= pid %>">
+                <div class="d-flex w-100 justify-content-between">
+                    <h2 class="h6 mb-1"><%= p.title %></h2>
+                    <small class="text-muted"><%= p.date %></small>
+                </div>
+                <p class="mb-0 small text-secondary"><%= p.excerpt %></p>
+            </a>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

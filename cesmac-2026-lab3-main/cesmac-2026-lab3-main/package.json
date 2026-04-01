@@ -1,0 +1,20 @@
+{
+  "name": "sample-class",
+  "version": "1.0.0",
+  "description": "Material de apoio para **alunos do 3º período** do curso de **Sistemas de Informação** da **CESMAC**. O projeto é um site simples servido por **Node.js**, com **Express** e páginas dinâmicas em **EJS**, para praticar rotas, templates e organização de um projeto web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
