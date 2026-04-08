@@ -1,6 +1,16 @@
-express = require('express');
-app = express();
+require('dotenv').config();
 
+const express = require('express');
+const { MongoClient } = require('mongodb');
+const bcrypt = require('bcrypt');
+
+const app = express();
+const MONGODB_URI = (process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017').trim();
+const DB_NAME = (process.env.MONGODB_DB || 'cesmac_blog').trim();
+
+let db;
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -55,7 +65,64 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-    res.render('register_user');
+    const ok = req.query.ok === '1';
+    res.render('register_user', { error: null, ok, values: null });
+});
+
+app.post('/register', async (req, res) => {
+    const nome = (req.body.nome || '').trim();
+    const email = (req.body.email || '').trim().toLowerCase();
+    const senha = req.body.senha || '';
+    const senha2 = req.body.senha2 || '';
+
+    const values = { nome, email };
+
+    if (!nome || !email || !senha) {
+        return res.status(400).render('register_user', {
+            error: 'Preencha nome, e-mail e senha.',
+            ok: false,
+            values,
+        });
+    }
+    if (senha !== senha2) {
+        return res.status(400).render('register_user', {
+            error: 'As senhas não coincidem.',
+            ok: false,
+            values,
+        });
+    }
+    if (senha.length < 6) {
+        return res.status(400).render('register_user', {
+            error: 'A senha deve ter pelo menos 6 caracteres.',
+            ok: false,
+            values,
+        });
+    }
+
+    try {
+        const passwordHash = await bcrypt.hash(senha, 10);
+        await db.collection('users').insertOne({
+            nome,
+            email,
+            passwordHash,
+            createdAt: new Date(),
+        });
+        return res.redirect('/register?ok=1');
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(400).render('register_user', {
+                error: 'Este e-mail já está cadastrado.',
+                ok: false,
+                values,
+            });
+        }
+        console.error(err);
+        return res.status(500).render('register_user', {
+            error: 'Não foi possível concluir o cadastro. Tente novamente.',
+            ok: false,
+            values,
+        });
+    }
 });
 
 app.get('/posts', (req, res) => {
@@ -74,6 +141,18 @@ app.get('/profile', (req, res) => {
     res.render('profile');
 });
 
-app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
+async function main() {
+    const client = new MongoClient(MONGODB_URI);
+    await client.connect();
+    db = client.db(DB_NAME);
+    await db.collection('users').createIndex({ email: 1 }, { unique: true });
+
+    app.listen(3000, () => {
+        console.log('Example app listening on port 3000!');
+    });
+}
+
+main().catch((err) => {
+    console.error('Falha ao iniciar:', err);
+    process.exit(1);
 });

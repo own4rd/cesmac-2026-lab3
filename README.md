@@ -67,4 +67,12 @@ Este repositório ajuda a relacionar teoria e prática em:
 - **Separação** entre lógica no servidor, marcação nas views e estilo no `public/`
 
 
+### MongoDB (Docker)
+
+```shell
+  docker compose exec mongo mongosh cesmac_blog
+```
+
+
+
 *Projeto educacional — CESMAC · Curso de Sistemas de Informação.*
