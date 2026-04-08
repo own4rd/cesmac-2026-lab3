@@ -141,11 +141,12 @@ app.get('/profile', (req, res) => {
     res.render('profile');
 });
 
+
 async function main() {
     const client = new MongoClient(MONGODB_URI);
     await client.connect();
     db = client.db(DB_NAME);
-    await db.collection('users').createIndex({ email: 1 }, { unique: true });
+    await db.collection('users').createIndex({ email: 1 }, { unique: true }); // Não pode existir 2 usuários com mesmo e-mail
 
     app.listen(3000, () => {
         console.log('Example app listening on port 3000!');
