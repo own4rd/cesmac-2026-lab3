@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog IA — Contato</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="container py-4">
+        <h1 class="h3 mb-3">Contato</h1>
+        <p class="text-muted">Formulário apenas visual — não envia dados.</p>
+        <form class="row g-3" action="#" method="post">
+            <div class="col-md-6">
+                <label class="form-label" for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="voce@exemplo.com">
+            </div>
+            <div class="col-12">
+                <label class="form-label" for="msg">Mensagem</label>
+                <textarea class="form-control" id="msg" name="msg" rows="4" placeholder="Sua mensagem sobre o blog..."></textarea>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-dark" disabled>Enviar (simulação)</button>
+            </div>
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
