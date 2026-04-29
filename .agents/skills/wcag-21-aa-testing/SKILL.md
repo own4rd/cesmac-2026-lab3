@@ -9,7 +9,6 @@ description: Auditoria e testes manuais alinhados a WCAG 2.1 nível AA — contr
 
 - Implementar ou revisar páginas web (HTML, templates EJS, CSS).
 - Auditoria rápida antes de merge ou entrega acadêmica/profissional.
-- Comparar código com checkpoints abaixo (não substitui teste com usuários).
 
 No repositório, mudanças em **`views/`** ou **`public/`** devem usar este documento como checklist obrigatório (regra **`frontend-wcag-accessibility`** em `.agents/rules/`).
 

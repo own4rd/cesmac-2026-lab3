@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog IA — <%= post ? 'Editar Post' : 'Novo Post' %>
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include('partials/navbar') %>
+        <main class="container py-4">
+            <h1 class="h3 mb-3">
+                <%= post ? 'Editar Post' : 'Criar Novo Post' %>
+            </h1>
+            <% if (error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+                    <form action="<%= post && post._id ? '/posts/edit/' + post._id : '/posts/new' %>" method="post">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                value="<%= post ? post.title : '' %>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="excerpt" class="form-label">Resumo</label>
+                            <input type="text" class="form-control" id="excerpt" name="excerpt"
+                                value="<%= post ? post.excerpt : '' %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Conteúdo (Parágrafos separados por quebra de
+                                linha)</label>
+                            <textarea class="form-control" id="content" name="content" rows="6"
+                                required><%= post ? post.content : '' %></textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <%= post ? 'Salvar Alterações' : 'Publicar' %>
+                            </button>
+                            <a href="<%= post && post._id ? '/post/' + post._id : '/posts' %>"
+                                class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+        </main>
+        <%- include('partials/footer') %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
