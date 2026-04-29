@@ -4,7 +4,6 @@ const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
-// Em CJS, require('connect-mongo') devolve o objeto de exports; a classe é .MongoStore ou .default.
 const connectMongo = require('connect-mongo');
 const MongoStore = connectMongo.MongoStore || connectMongo.default;
 
